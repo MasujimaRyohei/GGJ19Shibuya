@@ -4,23 +4,18 @@ using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
 
-public class DebugInputProvider : MonoBehaviour, IInputProvider
+public class DebugInputProvider : BasePlayer, IInputProvider
 {
     private ReactiveProperty<bool> _attack = new ReactiveProperty<bool>();
     private ReactiveProperty<Vector3> _moveDirection = new ReactiveProperty<Vector3>();
     public IReadOnlyReactiveProperty<bool> AttackButton { get { return _attack; } }
     public IReadOnlyReactiveProperty<Vector3> MoveDirection { get { return _moveDirection; } }
 
-    public string Horizontal = "Horizontal0";
-    public string Vertical = "Vertical0";
-    public KeyCode KeyCode = KeyCode.Space;
-    
-    void Start()
-    {
-        StartObserveInputs();
-    }
+    private string Horizontal = "Horizontal0";
+    private string Vertical = "Vertical0";
+    private KeyCode KeyCode = KeyCode.Space;
 
-    void StartObserveInputs()
+    protected override void Initialize()
     {
         this.UpdateAsObservable()
             .Select(x => Input.GetKeyDown(KeyCode))
