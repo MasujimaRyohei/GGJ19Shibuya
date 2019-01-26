@@ -15,6 +15,18 @@ public class DebugInputProvider : BasePlayer, IInputProvider
     private string Vertical = "Vertical0";
     private KeyCode KeyCode = KeyCode.Space;
 
+    void Start()
+    {
+        this.UpdateAsObservable()
+            .Select(x => Input.GetKeyDown(KeyCode))
+            .DistinctUntilChanged()
+            .Subscribe(x => _attack.Value = x);
+        
+        this.UpdateAsObservable()
+            .Select(x => new Vector3(Input.GetAxis(Horizontal),0,Input.GetAxis(Vertical)))
+            .Subscribe(x => _moveDirection.Value = x);
+    }
+
     protected override void Initialize()
     {
         this.UpdateAsObservable()

@@ -5,15 +5,10 @@ using UniRx;
 
 public class PlayerMover : BasePlayer
 {
-    public float moveSpeed = 5;
+    public float moveSpeed = 10;
     public bool isAttacking = false;
 
     private Rigidbody _rigidbody;
-
-    public void Set()
-    {
-        Initialize();
-    }
 
     protected override void Initialize()
     {
@@ -37,7 +32,7 @@ public class PlayerMover : BasePlayer
     private void Move(Vector3 moveDirection)
     {
         Debug.Log("Player" + PlayerID + "移動");
-        _rigidbody.AddForce(moveDirection, ForceMode.Acceleration);
+        _rigidbody.AddForce(moveDirection, ForceMode.VelocityChange);
     }
 
     private void Attack()
