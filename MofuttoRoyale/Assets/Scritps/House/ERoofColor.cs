@@ -1,10 +1,11 @@
-﻿public enum ERoofColor 
+﻿public enum ERoofColor
 {
-  Black,
-  Red,
-  Yellow,
-  Green,
-  Orange,
-  Blue,
-  Purple
+    None,
+    Black,
+    Red,
+    Yellow,
+    Green,
+    Orange,
+    Blue,
+    Purple
 }
