@@ -1,0 +1,72 @@
+@startuml SequenceDiagram
+
+participant GameManager as gm
+participant HorseLabyrinthController as hc
+participant BoardManager as bm
+participant CellHandler as ch
+
+== ReadyForQuestion ==
+
+hc -> hc : Json読み込み
+hc -> bm : Cell作成依頼
+bm -> bm : 初期化
+
+loop cellの個数分繰り返す
+bm -> ch : Cell作成
+ch -> ch : 初期化
+ch --> bm : 初期化完了
+bm -> ch : Button監視開始
+end
+
+bm --> hc : 作成完了
+hc -> hh : Horse作成
+hh -> hh : 初期化
+hh --> hc : 初期化完了
+
+== Answering ==
+loop Carrotにたどり着くまで繰り返す
+
+opt Undoボタンが押される
+hc -> bm : Cellを戻す依頼
+bm --> hc : 前の位置情報を送信
+hc -> hh : Horse位置変更
+hh --> hc : 完了通知
+end
+
+hc -> bm : 移動可能場所検索依頼
+bm -> bm : 移動可能場所検索
+bm -> ch : Cell情報更新
+
+ch -> ch : Cell押下
+ch -> bm : ボタン通知
+bm -> bm : 押下イベントInvoke
+bm -> bm : Board情報更新
+
+hc -> hc : Cell押下イベント検知
+hc -> hh : Horse移動指示
+hh -> hh : 指定位置まで移動
+hh --> hc : 移動完了通知
+
+hc -> bm : 解答確認依頼
+bm -> bm : 解答確認開始
+bm --> hc : 解答送信
+
+alt Carrotに辿り着いていない
+hc -> bm : Cellを沈める依頼
+bm -> ch : Cellを沈める指示
+ch -> ch : Cellを沈める
+
+else Carrotに辿り着いた
+hc -> bm : ボタンを押せないように依頼
+bm -> bm : 全てのボタンを押せなくする
+bm --> hc : 完了通知
+hc -> hc : Resultへ移行
+end
+
+end
+
+== Result ==
+hc -> hc : 解答アニメーション開始
+hc -> hc : Scoreを送信
+
+@enduml
