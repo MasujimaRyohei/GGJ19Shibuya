@@ -17,7 +17,7 @@ public class PlayerMover : BasePlayer
         InputProvider.MoveDirection
             .Subscribe(x => 
             {
-                var value = x.normalized * moveSpeed;
+                var value = x.normalized * CurrentPlayerInfo.MoveSpeed;
                 Move(value);
             });
         

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
 
 public abstract class BasePlayer : MonoBehaviour
 {
@@ -10,12 +11,20 @@ public abstract class BasePlayer : MonoBehaviour
     private IInputProvider _inputProvider;
     protected IInputProvider InputProvider { get { return _inputProvider; } }
 
+    public PlayerInfo CurrentPlayerInfo { get => PlayerCore.CurrentPlayerInfomation; }
+
     void Start()
     {
         PlayerCore = GetComponent<PlayerCore>();
         _inputProvider = GetComponent<IInputProvider>();
+
+        PlayerCore.IsInitializedPlayer.FirstOrDefault()
+            .Subscribe(_ => 
+            {
+                Initialize();
+            });
+        
         OnStart();
-        Initialize();
     }
 
     protected virtual void OnStart() { }
