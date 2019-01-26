@@ -9,4 +9,20 @@ class GameManager
 class SaveData
 class ScoreManager
 class Performer
+class TargetManager 
+
+class UIManager
+
+Player --|> Character
+Character --> Input
+Character --> Item
+
+ScoreManager --> SaveData
+GameManager --> ScoreManager
+GameManager --> TargetManager
+GameManager --> House
+GameManager --> Timer
+
+ScoreManager --> UIManager
+
 @enduml 
