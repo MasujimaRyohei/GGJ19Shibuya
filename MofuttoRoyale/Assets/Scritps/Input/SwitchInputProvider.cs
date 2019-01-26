@@ -16,17 +16,17 @@ public class SwitchInputProvider : BasePlayer, IInputProvider
     public string Vertical;
     public string Attack;
 
-    protected override void OnStart()
+    protected override void Initialize()
     {
-        Debug.Log("Initialize,Input");
+        Debug.Log("Initialize,Input" + PlayerID);
         Horizontal = "Horizontal" + PlayerID;
         Vertical = "Vertical" + PlayerID;
-        Attack = "Attack" + PlayerID;
+        Attack = "joystick " + PlayerID + " button 1";
 
-        // this.UpdateAsObservable()
-        //     .Select(x => Input.GetKeyDown(Attack))
-        //     .DistinctUntilChanged()
-        //     .Subscribe(x => _attack.Value = x);
+        this.UpdateAsObservable()
+            .Select(x => Input.GetKey(Attack))
+            .DistinctUntilChanged()
+            .Subscribe(x => _attack.Value = x);
 
         this.UpdateAsObservable()
             .Select(x => new Vector3(Input.GetAxis(Horizontal), 0, Input.GetAxis(Vertical)))
@@ -34,10 +34,5 @@ public class SwitchInputProvider : BasePlayer, IInputProvider
             {
                 _moveDirection.Value = x;
             });
-    }
-
-    protected override void Initialize()
-    {
-        
     }
 }

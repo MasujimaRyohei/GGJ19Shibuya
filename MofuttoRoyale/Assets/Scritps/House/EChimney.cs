@@ -1,5 +1,0 @@
-﻿enum EChimney
-{
-    None,
-    Normal
-}

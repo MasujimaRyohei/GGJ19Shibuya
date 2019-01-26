@@ -15,20 +15,14 @@ public class PlayerMover : BasePlayer
         Initialize();
     }
 
-    protected override void OnStart()
-    {
-        
-    }
-
     protected override void Initialize()
     {
-        Debug.Log("Initialize,Mover");
+        Debug.Log("Initialize,Mover" + PlayerID);
         _rigidbody = GetComponent<Rigidbody>();
         InputProvider.MoveDirection
             .Subscribe(x => 
             {
                 var value = x.normalized * moveSpeed;
-                Debug.Log("Move:" + value);
                 Move(value);
             });
         
@@ -42,13 +36,13 @@ public class PlayerMover : BasePlayer
 
     private void Move(Vector3 moveDirection)
     {
+        Debug.Log("Player" + PlayerID + "移動");
         _rigidbody.AddForce(moveDirection, ForceMode.Acceleration);
     }
 
     private void Attack()
     {
-        Debug.Log("Attack!");
+        Debug.Log("Player" + PlayerID + "のAttack!");
         isAttacking = true;
-        
     }
 }
