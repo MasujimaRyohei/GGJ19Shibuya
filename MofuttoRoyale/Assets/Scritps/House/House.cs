@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UniRx;
 using UniRx.Triggers;
 
@@ -14,7 +15,7 @@ public class House : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        this.OnCollisionEnterAsObservable().Where(obj => obj.transform.tag == GameConfig.Tags.Player).Subscribe(_ => print("HIT HOUSE"));
+        this.OnCollisionEnterAsObservable().Where(obj => obj.transform.tag == GameConfig.Tags.Player).Subscribe(_ => SceneManager.LoadScene(GameConfig.SceneName.Title));
     }
 
     // Update is called once per frame
