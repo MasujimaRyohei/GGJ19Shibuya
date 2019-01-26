@@ -25,9 +25,11 @@ public class PlayerCore : MonoBehaviour
     private PlayerInfo _normalPlayerInfomation;
     public PlayerInfo NormalPlayerInfomation { get => _normalPlayerInfomation; }
 
-    private ReactiveProperty<bool> isInitializedPlayer = new BoolReactiveProperty(false);
-    public IReadOnlyReactiveProperty<bool> IsInitializedPlayer { get => isInitializedPlayer; }
+    private ReactiveProperty<bool> _isInitializedPlayer = new BoolReactiveProperty(false);
+    public IReadOnlyReactiveProperty<bool> IsInitializedPlayer { get => _isInitializedPlayer; }
 
+    public ReactiveProperty<bool> IsAttacking = new BoolReactiveProperty(false);
+    
     public void InitializePlayer(int id, PlayerType type, Vector3 point)
     {
         _playerID = id;
@@ -35,18 +37,18 @@ public class PlayerCore : MonoBehaviour
         _respownPoint = point;
 
         SetPlayerInfomation();
-        isInitializedPlayer.Value = true;
+        _isInitializedPlayer.Value = true;
     }
 
     private void SetPlayerInfomation()
     {
         _normalPlayerInfomation = new PlayerInfo(PointRate,MoveSpeed,Power);
         _currentPlayerInfomation = NormalPlayerInfomation;
-        
-        isInitializedPlayer.FirstOrDefault()
+
+        _isInitializedPlayer.FirstOrDefault()
             .Subscribe(_ =>
             {
-                Debug.Log("PlayerCore.Initialized");
+                
             });
     }
 }

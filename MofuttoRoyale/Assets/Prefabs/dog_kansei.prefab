@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6147198797539139577}
   - component: {fileID: 2564854543848520798}
   - component: {fileID: 827285896}
+  - component: {fileID: 4386608622594488429}
   m_Layer: 0
   m_Name: dog_kansei
   m_TagString: Untagged
@@ -44,7 +45,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827285889}
   serializedVersion: 2
-  m_Mass: 0.2
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 10
   m_UseGravity: 1
@@ -95,7 +96,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  isAttacking: 0
 --- !u!135 &827285896
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -109,6 +109,25 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 5
   m_Center: {x: 0, y: 4.8, z: 1}
+--- !u!95 &4386608622594488429
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827285889}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 8f68a69829d9a438ea6a38c4f2e2d02d, type: 3}
+  m_Controller: {fileID: 9100000, guid: 6605486b425314a2e89dff3885cc9df5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &827285892
 GameObject:
   m_ObjectHideFlags: 0
