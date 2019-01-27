@@ -35,7 +35,6 @@ public class RuleMove : MonoBehaviour {
 	void Update () {
 		if(rFlag == true){
 			if (flag == true) {
-				print ("RuleImage動くよ！");
                 btnController.GetComponent<ButtonController>().useFlag = false;
                 print (dxR);
 				dxR -= dx;
@@ -46,7 +45,6 @@ public class RuleMove : MonoBehaviour {
 				}
 
 			} else if (flag == false) {
-				print ("戻るボタン現れるよ！");
 				aB += da;
 				//ButtonImage.GetComponent<Image> ().color = new Vector4 (rB, gB, bB, aB);
 				if (aB > 1) {
@@ -55,8 +53,7 @@ public class RuleMove : MonoBehaviour {
 				}
 			}
 			if (removeFlag == true) {
-				if (Input.GetKey (KeyCode.Return) || Input.GetButtonDown("Joycon1AButton")) {
-					print ("戻るボタンが消えてRuleImage動くよ！");
+				if (Input.GetKey (KeyCode.Return) || Input.GetButtonDown("Attack1")) {
 					rmFlag = true;
 				}
 			}
@@ -68,7 +65,7 @@ public class RuleMove : MonoBehaviour {
 
 					dxR += ddx;
 					RuleImage.GetComponent<RectTransform> ().localPosition = new Vector3 (dxR, 0.0f, zR);
-					if (dxR > 850) {
+					if (dxR > 1250) {
 						ddx = 0f;
 						rmFlag = false;
 						rFlag = false;
