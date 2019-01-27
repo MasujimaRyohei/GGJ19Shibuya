@@ -48,5 +48,15 @@ public void ShowHint()
                 break;
         }
 
+        hint2Popup.gameObject.SetActive(true);
+
+        if(target.ChimneyExists)
+        {
+            hint2Popup.sprite = chimney;
+        }
+        else if(target.WindowExists)
+        {
+            hint2Popup.sprite = window;
+        }
     }
 }
