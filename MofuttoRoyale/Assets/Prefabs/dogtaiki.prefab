@@ -775,6 +775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerCore: {fileID: 535678299613378619}
   moveSpeed: 4
+  _rigidbody: {fileID: 8381339316301033053}
 --- !u!135 &5685470274421533783
 SphereCollider:
   m_ObjectHideFlags: 0
