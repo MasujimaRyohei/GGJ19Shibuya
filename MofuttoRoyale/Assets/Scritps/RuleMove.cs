@@ -10,10 +10,10 @@ public class RuleMove : MonoBehaviour {
 	[SerializeField] private GameObject btnController;
 
 
-	float dx = 10.0f;
-	float da = 0.01f;
-	float ddx = 10.0f;
-	float dda = 0.1f;
+	float dx = 50.0f;
+	float da = 0.05f;
+	float ddx = 50.0f;
+	float dda = 0.5f;
 	float dxR, zR, rB, gB, bB, aB;
 	public bool flag = true;
 	public bool rFlag = false;
@@ -65,7 +65,7 @@ public class RuleMove : MonoBehaviour {
 
 					dxR += ddx;
 					RuleImage.GetComponent<RectTransform> ().localPosition = new Vector3 (dxR, 0.0f, zR);
-					if (dxR > 1250) {
+					if (dxR > 1750) {
 						ddx = 0f;
 						rmFlag = false;
 						rFlag = false;
