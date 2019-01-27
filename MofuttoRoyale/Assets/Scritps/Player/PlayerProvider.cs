@@ -25,13 +25,12 @@ public class PlayerProvider : MonoBehaviour
         else
         {
             RandomSetPlayerType();
-            for (var id = 1; id <= PlayerNumber; id++)
+            for (var id = 0; id < PlayerNumber; id++)
             {
-                var playerTypeNum = playerTypeNumbers[id - 1];
+                var playerTypeNum = playerTypeNumbers[id];
                 var playerType = ConvertEnum.ConvertToEnum<PlayerType>(playerTypeNum);
-                Debug.Log("Player:" + id + "PlayerType:" + playerType);
-                var player = Instantiate(PlayerPrefabs[playerTypeNum], SpawnPoints[id - 1].position, Quaternion.LookRotation(Vector3.back));
-                player.GetComponent<PlayerCore>().InitializePlayer(id, playerType, SpawnPoints[id - 1].position);
+                var player = Instantiate(PlayerPrefabs[playerTypeNum], SpawnPoints[id].position, Quaternion.LookRotation(Vector3.back));
+                player.GetComponent<PlayerCore>().InitializePlayer(id, playerType, SpawnPoints[id].position);
             }
         }
     }

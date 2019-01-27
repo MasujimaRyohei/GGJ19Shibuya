@@ -11,7 +11,6 @@ public class SpeedUpItem : ItemBase
 
     public override PlayerInfo UseItem(PlayerInfo currentInfo)
     {
-        Debug.Log("SpeedUpだお〜〜");
         currentInfo.MoveSpeed = currentInfo.MoveSpeed * 1.5f;
         return currentInfo;
     }

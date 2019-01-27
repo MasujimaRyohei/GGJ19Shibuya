@@ -11,4 +11,6 @@
     {
         public const string Player = "Player";
     }
+
+    public const int PlayerMax = 4;
 }
