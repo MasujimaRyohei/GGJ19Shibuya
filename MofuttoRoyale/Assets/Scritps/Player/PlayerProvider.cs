@@ -4,18 +4,60 @@ using UnityEngine;
 
 public class PlayerProvider : MonoBehaviour
 {
-    public GameObject PlayerPrefab;
+    public GameObject[] PlayerPrefabs;
     public Transform[] SpawnPoints;
-    public int PlayerNumber = 4;
+    public int PlayerNumber;
+    private int[] playerTypeNumbers;
+    public bool isDebug = false;
+
     void Start()
     {
-        for (var id = 1; id <= PlayerNumber; id++)
-        {
-            Debug.Log("Player:" + id);
-            var player = Instantiate(PlayerPrefab,SpawnPoints[id - 1]).GetComponent<BasePlayer>();
-            player.GetComponent<BasePlayer>().SetPlayer(id);
-            player.GetComponent<PlayerMover>().Set();
-        }
-
+        CreatePlayer();
     }
+
+    public void CreatePlayer()
+    {
+        if (isDebug)
+        {
+            Debug.Log("Debug");
+            var player = Instantiate(PlayerPrefabs[0], SpawnPoints[0].position, Quaternion.LookRotation(Vector3.back));
+            player.GetComponent<PlayerCore>().InitializePlayer(0,PlayerType.Dog,SpawnPoints[0].position);
+        }
+        else
+        {
+            RandomSetPlayerType();
+            for (var id = 1; id <= PlayerNumber; id++)
+            {
+                var playerTypeNum = playerTypeNumbers[id - 1];
+                var playerType = ConvertEnum.ConvertToEnum<PlayerType>(playerTypeNum);
+                Debug.Log("Player:" + id + "PlayerType:" + playerType);
+                var player = Instantiate(PlayerPrefabs[playerTypeNum], SpawnPoints[id - 1].position, Quaternion.LookRotation(Vector3.back));
+                player.GetComponent<PlayerCore>().InitializePlayer(id,playerType,SpawnPoints[id - 1].position);
+            }
+        }
+    }
+
+    private void RandomSetPlayerType()
+    {
+        playerTypeNumbers = new int[PlayerNumber];
+        int random = Random.Range(0, PlayerNumber);
+        for (int i = 0; i < PlayerNumber; i++)
+        {
+            playerTypeNumbers[i] = i;
+        }
+        for (int i = 0; i < PlayerNumber; i++)
+        {
+            int temp = playerTypeNumbers[i];
+            playerTypeNumbers[i] = playerTypeNumbers[random];
+            playerTypeNumbers[random] = temp;
+        }
+    }
+}
+
+public enum PlayerType
+{
+    Dog = 0,
+    Hiyoko = 1,
+    Usagi = 2,
+    Zou = 3
 }

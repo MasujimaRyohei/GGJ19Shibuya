@@ -1,28 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
 
 public abstract class BasePlayer : MonoBehaviour
 {
-    private int _playerID;
-    public int PlayerID { get { return _playerID; } }
+    protected PlayerCore PlayerCore;
+    protected int PlayerID { get { return PlayerCore.PlayerID; } }
 
     private IInputProvider _inputProvider;
     protected IInputProvider InputProvider { get { return _inputProvider; } }
 
-    void Awake()
+    public PlayerInfo CurrentPlayerInfo { get => PlayerCore.CurrentPlayerInfomation; }
+
+    void Start()
     {
+        PlayerCore = GetComponent<PlayerCore>();
         _inputProvider = GetComponent<IInputProvider>();
-    }
 
-    public void SetPlayer(int id)
-    {
-        _playerID = id;
+        PlayerCore.IsInitializedPlayer.FirstOrDefault()
+            .Subscribe(_ => 
+            {
+                Initialize();
+            });
+        
         OnStart();
-        Initialize();
     }
 
-
-    protected abstract void OnStart();
+    protected virtual void OnStart() { }
     protected abstract void Initialize();
 }
