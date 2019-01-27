@@ -11,6 +11,7 @@ public class SpeedUpItem : ItemBase
 
     public override PlayerInfo UseItem(PlayerInfo currentInfo)
     {
+        AudioManager.Instance.PlaySE("UPBufu");
         currentInfo.MoveSpeed = currentInfo.MoveSpeed * 1.5f;
         return currentInfo;
     }

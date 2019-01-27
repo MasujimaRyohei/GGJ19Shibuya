@@ -11,6 +11,7 @@ public class PowerUpItem : ItemBase
 
     public override PlayerInfo UseItem(PlayerInfo currentInfo)
     {
+        AudioManager.Instance.PlaySE("UPBufu");
         currentInfo.Power = currentInfo.Power * 1.5f;
         return currentInfo;
     }

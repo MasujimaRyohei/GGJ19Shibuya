@@ -58,6 +58,8 @@ public class PlayerCore : MonoBehaviour
     void OnCollisionEnter(Collision col)
     {
         _playerMover.OnCollisionOtherPlayer(col);
+        AudioManager.Instance.PlaySE("Tackle001");
+
     }
 
     void OnTriggerEnter(Collider col)

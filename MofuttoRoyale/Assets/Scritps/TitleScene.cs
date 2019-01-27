@@ -10,7 +10,12 @@ public class TitleScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.UpdateAsObservable().Where(_ => Input.anyKeyDown).Subscribe(_ => SceneManager.LoadScene(GameConfig.SceneName.Main));
+        AudioManager.Instance.PlayBGM("MainBGM");
+        this.UpdateAsObservable().Where(_ => Input.anyKeyDown).Subscribe(_ => 
+        {
+            AudioManager.Instance.PlaySE("kettei001");
+            SceneManager.LoadScene(GameConfig.SceneName.Main);
+        });
     }
 
     // Update is called once per frame
