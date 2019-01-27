@@ -1,5 +1,5 @@
 ﻿using System;
-using Random = System.Random;
+using Random = UnityEngine.Random;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -12,15 +12,10 @@ public class HouseInfo
     [SerializeField] private bool chimneyExists;
     [SerializeField] private bool windowExists;
 
-    private static readonly Random mRandom = new Random();
-
-    public HouseInfo()
-    {
-        this.roofExists = RandomBool();
-        this.roofColor = Random<ERoofColor>();
-        this.chimneyExists = RandomBool();
-        this.windowExists = RandomBool();
-    }
+    public bool RoofExists { get { return roofExists; } }
+    public ERoofColor RoofColor { get { return roofColor; } }
+    public bool ChimneyExists { get { return chimneyExists; } }
+    public bool WindowExists { get { return windowExists; } }
 
     public HouseInfo(bool roofExists, ERoofColor roofColor,bool chimneyExists, bool windowExists)
     {
@@ -28,20 +23,29 @@ public class HouseInfo
         this.roofColor = roofColor;
         this.chimneyExists = chimneyExists;
         this.windowExists = windowExists;
+
+        Debug.Log(roofExists +" : "+ roofColor + " : " + chimneyExists + " : " + windowExists);
     }
 
-
-
-    private T Random<T>()
+    public static HouseInfo GetRandomHouseInfo()
     {
+        return new HouseInfo(RandomBool(), RandomEnum<ERoofColor>(), RandomBool(), RandomBool());
+    }
+
+    public static bool RandomBool()
+    {
+        return Random.Range(0, 2) == 0;
+    }
+
+    public static T RandomEnum<T>()
+    {
+        System.Random mRandom = new System.Random();
+
         return Enum.GetValues(typeof(T))
             .Cast<T>()
             .OrderBy(c => mRandom.Next())
             .FirstOrDefault();
     }
 
-    private bool RandomBool()
-    {
-        return UnityEngine.Random.Range(0, 2) == 0;
-    }
+
 }
