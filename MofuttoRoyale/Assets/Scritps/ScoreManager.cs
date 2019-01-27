@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour
 {
     [SerializeField]
     IntReactiveProperty[] playerScore = new IntReactiveProperty[GameConfig.PlayerMax];
+    public IntReactiveProperty[] PlayerScores { get { return playerScore; } }
     public void Initialize()
     {
         for (int i = 0; i < GameConfig.PlayerMax; i++)

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 using UniRx;
 using System.Linq;
@@ -14,7 +15,18 @@ public class GameManager : MonoBehaviour
     public HouseBuilder houseBuilder;
     public PlayerProvider playerProvider;
     public PlayerCore[] players;
+    public Image[] playerIcons;
 
+    public Sprite[] number;
+
+    [System.Serializable]
+   public class Score
+    {
+      public  Image ten;
+       public Image one;
+    }
+
+    public Score[] scoreUI;
     public BoolReactiveProperty Controllable = new BoolReactiveProperty(false);
 
     private int defaultScore = 3;
@@ -24,6 +36,12 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         players = playerProvider.CreatePlayer();
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            PlayerCore player = (PlayerCore)players[i];
+            playerIcons[i].sprite = players[i].Icon;
+        }
 
         Controllable.Subscribe(value =>
         {
@@ -60,6 +78,20 @@ public class GameManager : MonoBehaviour
         targetManager.TargetInfo = houses[Random.Range(0, houses.Count - 1)].Info;
 
 
+        for (int i = 0; i < players.Length; i++)
+        {
+            scoreManager.PlayerScores[i].Subscribe(score =>
+            {
+                int ten = score / 10;
+                int one = score % 10;
+
+                scoreUI[i].ten.sprite = number[ten];
+                scoreUI[i].one.sprite = number[one];
+
+            });
+        }
+
+
         StartCoroutine(WaveCutIn());
     }
 
@@ -74,6 +106,7 @@ public class GameManager : MonoBehaviour
         waveCutIn.transform.DOLocalMove(new Vector3(700, 0, 0), cutInTime);
 
         Controllable.Value = true;
+        targetManager.ShowHint();
 
     }
 }

@@ -67,6 +67,8 @@ MonoBehaviour:
   PointRate: 1
   MoveSpeed: 4
   Power: 5
+  _playerMover: {fileID: 7602180108822506759}
+  faceLogo: {fileID: 21300000, guid: 7b8ed85f32a043541b6af7876fbfce5d, type: 3}
 --- !u!114 &9065124730269197084
 MonoBehaviour:
   m_ObjectHideFlags: 0

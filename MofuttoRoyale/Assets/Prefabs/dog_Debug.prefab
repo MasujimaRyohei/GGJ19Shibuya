@@ -144,6 +144,7 @@ MonoBehaviour:
   PointRate: 0
   MoveSpeed: 0
   Power: 0
+  _playerMover: {fileID: 8140521308345551138}
 --- !u!114 &8140521308345551136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerCore: {fileID: 8140521308345551143}
   moveSpeed: 5
+  _rigidbody: {fileID: 0}
 --- !u!135 &8140521308345551142
 SphereCollider:
   m_ObjectHideFlags: 0

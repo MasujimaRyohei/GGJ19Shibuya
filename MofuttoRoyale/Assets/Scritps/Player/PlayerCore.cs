@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UniRx;
 
 public class PlayerCore : MonoBehaviour
@@ -30,7 +31,12 @@ public class PlayerCore : MonoBehaviour
 
     public ReactiveProperty<bool> IsAttacking = new BoolReactiveProperty(false);
 
+    [SerializeField]
     private PlayerMover _playerMover;
+
+    [SerializeField]
+    private Sprite faceLogo;
+    public Sprite Icon { get { return faceLogo; } }
 public bool IsMovable
     {
         get { return _playerMover.enabled; }
@@ -43,7 +49,6 @@ public bool IsMovable
         _playerType = type;
         _respownPoint = point;
 
-        _playerMover = GetComponent<PlayerMover>();
         SetPlayerInfomation();
         _isInitializedPlayer.Value = true;
     }
@@ -63,8 +68,10 @@ public bool IsMovable
     void OnCollisionEnter(Collision col)
     {
         _playerMover.OnCollisionOtherPlayer(col);
-        AudioManager.Instance.PlaySE("Tackle001");
-
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySE("Tackle001");
+        }
     }
 
     void OnTriggerEnter(Collider col)
