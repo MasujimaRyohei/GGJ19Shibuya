@@ -62,6 +62,11 @@ public class PlayerCore : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        
+        var item = col.gameObject.GetComponent<ItemBase>();
+        if(item)
+        {
+            _currentPlayerInfomation = item.UseItem(CurrentPlayerInfomation);
+            Destroy(col.gameObject);
+        }
     }
 }

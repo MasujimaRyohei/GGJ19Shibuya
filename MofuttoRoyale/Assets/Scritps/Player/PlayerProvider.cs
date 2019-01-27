@@ -19,9 +19,8 @@ public class PlayerProvider : MonoBehaviour
     {
         if (isDebug)
         {
-            Debug.Log("Debug");
             var player = Instantiate(PlayerPrefabs[0], SpawnPoints[0].position, Quaternion.LookRotation(Vector3.back));
-            player.GetComponent<PlayerCore>().InitializePlayer(0,PlayerType.Dog,SpawnPoints[0].position);
+            player.GetComponent<PlayerCore>().InitializePlayer(0, PlayerType.Dog, SpawnPoints[0].position);
         }
         else
         {
@@ -32,7 +31,7 @@ public class PlayerProvider : MonoBehaviour
                 var playerType = ConvertEnum.ConvertToEnum<PlayerType>(playerTypeNum);
                 Debug.Log("Player:" + id + "PlayerType:" + playerType);
                 var player = Instantiate(PlayerPrefabs[playerTypeNum], SpawnPoints[id - 1].position, Quaternion.LookRotation(Vector3.back));
-                player.GetComponent<PlayerCore>().InitializePlayer(id,playerType,SpawnPoints[id - 1].position);
+                player.GetComponent<PlayerCore>().InitializePlayer(id, playerType, SpawnPoints[id - 1].position);
             }
         }
     }

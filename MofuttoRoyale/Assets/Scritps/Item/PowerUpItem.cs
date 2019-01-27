@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedUpItem : ItemBase
+public class PowerUpItem : ItemBase
 {
     void Start()
     {
-        _itemType = ItemType.SpeedUp;
+        _itemType = ItemType.PowerUp;
     }
 
     public override PlayerInfo UseItem(PlayerInfo currentInfo)
     {
-        Debug.Log("SpeedUpだお〜〜");
-        currentInfo.MoveSpeed = currentInfo.MoveSpeed * 1.5f;
+        Debug.Log("PowerUpだお〜〜");
+        currentInfo.Power = currentInfo.Power * 1.5f;
         return currentInfo;
     }
 }
