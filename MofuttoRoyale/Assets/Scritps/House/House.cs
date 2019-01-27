@@ -11,18 +11,18 @@ public class House : MonoBehaviour
     public HouseInfo Info { get { return info; } }
     private Subject<int> onTouchPlayer = new Subject<int>();
     public IObservable<int> OnTouchPlayer { get { return onTouchPlayer; } }
-    // Start is called before the first frame update
-    private void Start()
-    {
-        
-    }
 
-    public void Initialize()
+    public void Initialize(HouseInfo info)
     {
-        info = HouseInfo.GetRandomHouseInfo();
+        this.info = info;
+
         this.OnCollisionEnterAsObservable()
             .Where(obj => obj.transform.tag == GameConfig.Tags.Player)
-            .Subscribe(obj =>  onTouchPlayer.OnNext(obj.transform.GetComponent<PlayerCore>().PlayerID));
+            .Subscribe(obj =>
+            {
+                onTouchPlayer.OnNext(obj.transform.GetComponent<PlayerCore>().PlayerID);
+                Destroy(obj.gameObject);
+            });
     }
 
     // Update is called once per frame

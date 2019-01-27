@@ -6,11 +6,11 @@ using UniRx;
 public class PlayerMover : BasePlayer
 {
     public float moveSpeed = 10;
+    [SerializeField]
     private Rigidbody _rigidbody;
 
     protected override void Initialize()
     {
-        _rigidbody = GetComponent<Rigidbody>();
         InputProvider.MoveDirection
             .Subscribe(x =>
             {

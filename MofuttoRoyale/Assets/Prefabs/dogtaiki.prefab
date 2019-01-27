@@ -757,6 +757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 908f7794e839e4ebb9b53e981897ee12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerCore: {fileID: 535678299613378619}
   Horizontal: 
   Vertical: 
   Attack: 
@@ -772,6 +773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5c081bd135047efb402c1e8743ca5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerCore: {fileID: 535678299613378619}
   moveSpeed: 4
 --- !u!135 &5685470274421533783
 SphereCollider:

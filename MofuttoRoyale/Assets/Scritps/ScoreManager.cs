@@ -5,6 +5,7 @@ using UniRx;
 
 public class ScoreManager : MonoBehaviour
 {
+    [SerializeField]
     IntReactiveProperty[] playerScore = new IntReactiveProperty[GameConfig.PlayerMax];
     public void Initialize()
     {
@@ -18,8 +19,8 @@ public class ScoreManager : MonoBehaviour
     public void AddScore(int id, int score)
     {
         playerScore[id-1].Value += score;
+        print(playerScore[id - 1].Value);
         string key = GameConfig.Tags.Player + id.ToString();
         PlayerPrefs.SetInt(key, PlayerPrefs.GetInt(key, 0) + score);
-        print(PlayerPrefs.GetInt(key, 0));
     }
 }
