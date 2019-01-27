@@ -141,6 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b71fb1441e3140e1b7cc7c65e1f4a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PointRate: 0
+  MoveSpeed: 0
+  Power: 0
 --- !u!114 &8140521308345551136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd35f9ff9d0e24e6886ab3d36235686a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerCore: {fileID: 8140521308345551143}
 --- !u!114 &8140521308345551138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,8 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5c081bd135047efb402c1e8743ca5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerCore: {fileID: 8140521308345551143}
   moveSpeed: 5
-  isAttacking: 0
 --- !u!135 &8140521308345551142
 SphereCollider:
   m_ObjectHideFlags: 0

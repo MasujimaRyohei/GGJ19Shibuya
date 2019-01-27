@@ -23,7 +23,6 @@ public class HouseInfo
         this.chimneyExists = chimneyExists;
         this.windowExists = windowExists;
 
-        Debug.Log(roofColor + " : " + chimneyExists + " : " + windowExists);
     }
 
     public static HouseInfo GetRandomHouseInfo()
