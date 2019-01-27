@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 70b2ec5eae68f4d69ade2950193f4291
+guid: da2b8b40898bf4c14bdb6c9ada6bad0d
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: dodai_madoNashi
+    100000: dodai_madoAriOK
     100002: //RootNode
-    400000: dodai_madoNashi
+    400000: dodai_madoAriOK
     400002: //RootNode
     2100000: palette
-    2300000: dodai_madoNashi
-    3300000: dodai_madoNashi
-    4300000: dodai_madoNashi
+    2300000: dodai_madoAriOK
+    3300000: dodai_madoAriOK
+    4300000: dodai_madoAriOK
   externalObjects: {}
   materials:
     importMaterials: 1

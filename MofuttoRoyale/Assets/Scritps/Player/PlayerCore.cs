@@ -29,6 +29,8 @@ public class PlayerCore : MonoBehaviour
     public IReadOnlyReactiveProperty<bool> IsInitializedPlayer { get => _isInitializedPlayer; }
 
     public ReactiveProperty<bool> IsAttacking = new BoolReactiveProperty(false);
+
+    private PlayerMover _playerMover;
     
     public void InitializePlayer(int id, PlayerType type, Vector3 point)
     {
@@ -36,6 +38,7 @@ public class PlayerCore : MonoBehaviour
         _playerType = type;
         _respownPoint = point;
 
+        _playerMover = GetComponent<PlayerMover>();
         SetPlayerInfomation();
         _isInitializedPlayer.Value = true;
     }
@@ -50,5 +53,15 @@ public class PlayerCore : MonoBehaviour
             {
                 
             });
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        _playerMover.OnCollisionOtherPlayer(col);
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        
     }
 }

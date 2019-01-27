@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 0854b660edd014e86b41692d85a342c1
+guid: 63f22f21876974a90aecdd537d1e9cdc
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: entotsu
+    100000: dodai_madoNashiOK
     100002: //RootNode
-    400000: entotsu
+    400000: dodai_madoNashiOK
     400002: //RootNode
     2100000: palette
-    2300000: entotsu
-    3300000: entotsu
-    4300000: entotsu
+    2300000: dodai_madoNashiOK
+    3300000: dodai_madoNashiOK
+    4300000: dodai_madoNashiOK
   externalObjects: {}
   materials:
     importMaterials: 1

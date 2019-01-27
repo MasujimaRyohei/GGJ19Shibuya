@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 0bf2af4ba350448e783be736e3a00e95
+guid: 0c59d41fae2bf40dca39735206f50828
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: yane
+    100000: entotsuOK
     100002: //RootNode
-    400000: yane
+    400000: entotsuOK
     400002: //RootNode
     2100000: palette
-    2300000: yane
-    3300000: yane
-    4300000: yane
+    2300000: entotsuOK
+    3300000: entotsuOK
+    4300000: entotsuOK
   externalObjects: {}
   materials:
     importMaterials: 1

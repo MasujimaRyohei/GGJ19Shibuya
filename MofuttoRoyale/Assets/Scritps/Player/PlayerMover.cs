@@ -45,7 +45,7 @@ public class PlayerMover : BasePlayer
         PlayerCore.IsAttacking.Value = false;
     }
 
-    void OnCollisionEnter(Collision col)
+    public void OnCollisionOtherPlayer(Collision col)
     {
         var isPlayer = col.gameObject.GetComponent<PlayerCore>();
         if (isPlayer == null) return;
