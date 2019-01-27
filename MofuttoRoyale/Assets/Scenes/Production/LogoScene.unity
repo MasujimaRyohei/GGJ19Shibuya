@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -222,7 +222,7 @@ MonoBehaviour:
   openReferences: 0
   openPrefabs: 0
   idRef:
-    _Keys: 60fac7a8c71c440b5cfbc0d518b5eb3d1a77dd16d860cd2fa9e157a7fd02572f8d1e4f97a24b8e2ad29243771f225225e74a13d108f99700d46701193b63f25e54f062360482df31184cbcbae3aaf07872cd71b7e9d6c779b54f6a094da865357c5d34f07a76d5646ce2babc3ddd1d287888a86df23a747dd71613ab131681404e0ec07a8aff0104f80d4c071b0b3c6d
+    _Keys: 60fac7a8c71c440b5cfbc0d518b5eb3d1a77dd16d860cd2fa9e157a7fd02572f8d1e4f97a24b8e2ad29243771f225225e74a13d108f99700d46701193b63f25e54f062360482df31184cbcbae3aaf07872cd71b7e9d6c779b54f6a094da865357c5d34f07a76d5646ce2babc3ddd1d287888a86df23a747dd71613ab131681404e0ec07a8aff0104f80d4c071b0b3c6d1b87c46b0289f523f9002106d233c832575d4413b86755246c1c86bb5e7de323c5c304ec88a5814b136781a706b81502f23d1c37144b937d
     _Values:
     - {fileID: 86703021}
     - {fileID: 86703023}
@@ -233,7 +233,7 @@ MonoBehaviour:
     - {fileID: 2096096973}
     - {fileID: 2096096976}
     - {fileID: 2096096975}
-    - {fileID: 2096096974}
+    - {fileID: 0}
     - {fileID: 11500000, guid: 9afd22e326fd8fe4bb9c6e2d8938062d, type: 3}
     - {fileID: 1167603512}
     - {fileID: 1167603514}
@@ -242,6 +242,13 @@ MonoBehaviour:
     - {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
     - {fileID: 21300000, guid: 5e0a77748ca1d9145938a46c34e2db2e, type: 3}
     - {fileID: 2800000, guid: 5e0a77748ca1d9145938a46c34e2db2e, type: 3}
+    - {fileID: 1564625280}
+    - {fileID: 1564625282}
+    - {fileID: 1564625281}
+    - {fileID: 4949867702420224827, guid: 1a682c75430864688b995c1597d00bdb, type: 3}
+    - {fileID: 11500000, guid: 96f9d321bde6e411fa9caf23ea3bdbe9, type: 3}
+    - {fileID: 1823914271325789740, guid: 1a682c75430864688b995c1597d00bdb, type: 3}
+    - {fileID: 670944624747097600, guid: 1a682c75430864688b995c1597d00bdb, type: 3}
   prefabs: []
 --- !u!114 &140151654
 MonoBehaviour:
@@ -423,6 +430,99 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1564625279
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4949867702420224827, guid: 1a682c75430864688b995c1597d00bdb,
+        type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 670944624747097600, guid: 1a682c75430864688b995c1597d00bdb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 670944624747097600, guid: 1a682c75430864688b995c1597d00bdb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 670944624747097600, guid: 1a682c75430864688b995c1597d00bdb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 670944624747097600, guid: 1a682c75430864688b995c1597d00bdb,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 670944624747097600, guid: 1a682c75430864688b995c1597d00bdb,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 670944624747097600, guid: 1a682c75430864688b995c1597d00bdb,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 670944624747097600, guid: 1a682c75430864688b995c1597d00bdb,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 670944624747097600, guid: 1a682c75430864688b995c1597d00bdb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 670944624747097600, guid: 1a682c75430864688b995c1597d00bdb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 670944624747097600, guid: 1a682c75430864688b995c1597d00bdb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 670944624747097600, guid: 1a682c75430864688b995c1597d00bdb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1a682c75430864688b995c1597d00bdb, type: 3}
+--- !u!1 &1564625280 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4949867702420224827, guid: 1a682c75430864688b995c1597d00bdb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1564625279}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1564625281 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1823914271325789740, guid: 1a682c75430864688b995c1597d00bdb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1564625279}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564625280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f9d321bde6e411fa9caf23ea3bdbe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1564625282 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 670944624747097600, guid: 1a682c75430864688b995c1597d00bdb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1564625279}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2096096973
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +533,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2096096976}
   - component: {fileID: 2096096975}
-  - component: {fileID: 2096096974}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -441,14 +540,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &2096096974
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2096096973}
-  m_Enabled: 1
 --- !u!20 &2096096975
 Camera:
   m_ObjectHideFlags: 0

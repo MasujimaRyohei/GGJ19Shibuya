@@ -11,6 +11,10 @@ public class LogoScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Observable.Timer(TimeSpan.FromSeconds(fadeTime)).Subscribe(_ => SceneManager.LoadScene(GameConfig.SceneName.Title));
+        Observable.Timer(TimeSpan.FromSeconds(fadeTime)).Subscribe(_ => 
+        {
+            AudioManager.Instance.PlayBGM("MainBGM");
+            SceneManager.LoadScene(GameConfig.SceneName.Title);
+        });
     }
 }

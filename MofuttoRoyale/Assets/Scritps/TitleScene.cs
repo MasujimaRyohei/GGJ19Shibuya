@@ -10,7 +10,6 @@ public class TitleScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AudioManager.Instance.PlayBGM("MainBGM");
         this.UpdateAsObservable().Where(_ => Input.anyKeyDown).Subscribe(_ => 
         {
             AudioManager.Instance.PlaySE("kettei001");
