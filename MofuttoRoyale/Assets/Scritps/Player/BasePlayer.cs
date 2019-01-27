@@ -16,6 +16,7 @@ public abstract class BasePlayer : MonoBehaviour
     void Start()
     {
         PlayerCore = GetComponent<PlayerCore>();
+        
         _inputProvider = GetComponent<IInputProvider>();
 
         PlayerCore.IsInitializedPlayer.FirstOrDefault()
