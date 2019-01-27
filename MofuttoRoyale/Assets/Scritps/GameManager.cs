@@ -12,8 +12,10 @@ public class GameManager : MonoBehaviour
     public GameObject waveCutIn;
     public ScoreManager scoreManager;
     public HouseBuilder houseBuilder;
+    public PlayerProvider playerProvider;
+    public PlayerCore[] players;
 
-    public bool Controllable { get; private set; }
+    public BoolReactiveProperty Controllable = new BoolReactiveProperty(false);
 
     private int defaultScore = 3;
     private int score = 3;
@@ -21,6 +23,16 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        players = playerProvider.CreatePlayer();
+
+        Controllable.Subscribe(value =>
+        {
+            foreach (PlayerCore player in players)
+            {
+                player.IsMovable = value;
+            }
+        });
+
         scoreManager.Initialize();
 
         houses.AddRange(houseBuilder.Build5Houses());
@@ -53,15 +65,15 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator WaveCutIn()
     {
-        Controllable = false;
+        Controllable.Value = false;
 
         float cutInTime = 1.0f;
-        waveCutIn.transform.localPosition = new Vector3(-500, 0, 0);
+        waveCutIn.transform.localPosition = new Vector3(-700, 0, 0);
         waveCutIn.transform.DOLocalMove(new Vector3(0, 0, 0), cutInTime);
         yield return new WaitForSeconds(2.0f);
-        waveCutIn.transform.DOLocalMove(new Vector3(500, 0, 0), cutInTime);
+        waveCutIn.transform.DOLocalMove(new Vector3(700, 0, 0), cutInTime);
 
-        Controllable = true;
+        Controllable.Value = true;
 
     }
 }
