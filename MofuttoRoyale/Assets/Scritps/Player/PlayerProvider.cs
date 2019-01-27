@@ -6,17 +6,16 @@ public class PlayerProvider : MonoBehaviour
 {
     public GameObject[] PlayerPrefabs;
     public Transform[] SpawnPoints;
-    public int PlayerNumber;
     private int[] playerTypeNumbers;
     public bool isDebug = false;
 
     void Start()
     {
-        CreatePlayer();
     }
 
-    public void CreatePlayer()
+    public PlayerCore[] CreatePlayer()
     {
+        PlayerCore[] players = new PlayerCore[GameConfig.PlayerMax];
         if (isDebug)
         {
             var player = Instantiate(PlayerPrefabs[0], SpawnPoints[0].position, Quaternion.LookRotation(Vector3.back));
@@ -25,25 +24,29 @@ public class PlayerProvider : MonoBehaviour
         else
         {
             RandomSetPlayerType();
-            for (var id = 0; id < PlayerNumber; id++)
+            for (var id = 0; id < GameConfig.PlayerMax; id++)
             {
                 var playerTypeNum = playerTypeNumbers[id];
                 var playerType = ConvertEnum.ConvertToEnum<PlayerType>(playerTypeNum);
                 var player = Instantiate(PlayerPrefabs[playerTypeNum], SpawnPoints[id].position, Quaternion.LookRotation(Vector3.back));
-                player.GetComponent<PlayerCore>().InitializePlayer(id, playerType, SpawnPoints[id].position);
+                players[id] = player.GetComponent<PlayerCore>();
+                players[id].InitializePlayer(id, playerType, SpawnPoints[id].position);
+
             }
         }
+
+        return players;
     }
 
     private void RandomSetPlayerType()
     {
-        playerTypeNumbers = new int[PlayerNumber];
-        int random = Random.Range(0, PlayerNumber);
-        for (int i = 0; i < PlayerNumber; i++)
+        playerTypeNumbers = new int[GameConfig.PlayerMax];
+        int random = Random.Range(0, GameConfig.PlayerMax);
+        for (int i = 0; i < GameConfig.PlayerMax; i++)
         {
             playerTypeNumbers[i] = i;
         }
-        for (int i = 0; i < PlayerNumber; i++)
+        for (int i = 0; i < GameConfig.PlayerMax; i++)
         {
             int temp = playerTypeNumbers[i];
             playerTypeNumbers[i] = playerTypeNumbers[random];
