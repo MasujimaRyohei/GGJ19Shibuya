@@ -79,6 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 908f7794e839e4ebb9b53e981897ee12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerCore: {fileID: 3614104697413978960}
   Horizontal: 
   Vertical: 
   Attack: 
@@ -94,8 +95,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5c081bd135047efb402c1e8743ca5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerCore: {fileID: 3614104697413978960}
   moveSpeed: 4
-  isAttacking: 0
+  _rigidbody: {fileID: 867825882653701670}
 --- !u!135 &1817250481
 SphereCollider:
   m_ObjectHideFlags: 0

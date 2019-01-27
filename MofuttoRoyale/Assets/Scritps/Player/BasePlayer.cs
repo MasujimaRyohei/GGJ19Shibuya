@@ -5,6 +5,7 @@ using UniRx;
 
 public abstract class BasePlayer : MonoBehaviour
 {
+    [SerializeField]
     protected PlayerCore PlayerCore;
     protected int PlayerID { get { return PlayerCore.PlayerID; } }
 
@@ -15,8 +16,6 @@ public abstract class BasePlayer : MonoBehaviour
 
     void Start()
     {
-        PlayerCore = GetComponent<PlayerCore>();
-        
         _inputProvider = GetComponent<IInputProvider>();
 
         PlayerCore.IsInitializedPlayer.FirstOrDefault()

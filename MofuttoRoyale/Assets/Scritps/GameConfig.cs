@@ -13,4 +13,5 @@
     }
 
     public const int PlayerMax = 4;
+    public const int HouseMax = 5;
 }

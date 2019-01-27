@@ -26,10 +26,11 @@ public class HouseBuilder : MonoBehaviour
     {
         GameObject houseObject = new GameObject("House" + Random.Range(0, 999));
         House house = houseObject.AddComponent<House>();
+        house.Initialize(info);
         if (info.ChimneyExists)
         {
             GameObject chimneyObject = Instantiate(chimney, houseObject.transform);
-            chimneyObject.transform.localPosition = new Vector3(-2.6f, 16f, 0f);
+            chimneyObject.transform.localPosition = new Vector3(-2.6f, 15f, 0f);
 
         }
 
@@ -46,7 +47,7 @@ public class HouseBuilder : MonoBehaviour
         houseBaseObject.transform.localPosition = new Vector3(0, 0, 3.2f);  
         GameObject roofObject = Instantiate(roof, houseObject.transform);
 
-        roofObject.transform.localPosition = new Vector3(0, 12, 0);
+        roofObject.transform.localPosition = new Vector3(0, 11, 3);
 
         Material roofMaterial = null;
 
@@ -78,69 +79,75 @@ public class HouseBuilder : MonoBehaviour
 
     }
 
-    public void Build5Houses()
+    public House[] Build5Houses()
     {
+        House[] houses = new House[5];
         Transform parent = new GameObject("Houses").transform;
 
         ///////////////
-        HouseInfo info = HouseInfo.GetRandomHouseInfo();
-        House house = BuildHouse(info);
-        house.transform.SetParent(parent);
-        BoxCollider collider = house.gameObject.AddComponent<BoxCollider>();
+        House house0 = BuildHouse(HouseInfo.GetRandomHouseInfo());
+        house0.transform.SetParent(parent);
+        BoxCollider collider = house0.gameObject.AddComponent<BoxCollider>();
         collider.center = new Vector3(1, 6, 2);
         collider.size = new Vector3(20, 10, 10);
-        house.transform.localPosition = new Vector3(7.5f, 0, 0.2f);
-        house.transform.localRotation =  Quaternion.Euler(0, -96, 0);
-        house.tag = GameConfig.Tags.Player;
+        house0.transform.localPosition = new Vector3(7.5f, 0, 0.2f);
+        house0.transform.localRotation =  Quaternion.Euler(0, -96, 0);
+        house0.tag = GameConfig.Tags.Player;
+
+        houses[0] = house0;
 
         ///////////////
-        info = HouseInfo.GetRandomHouseInfo();
-        house = BuildHouse(info);
-        house.transform.SetParent(parent);
-        collider = house.gameObject.AddComponent<BoxCollider>();
+        House house1 = BuildHouse(HouseInfo.GetRandomHouseInfo());
+        house1.transform.SetParent(parent);
+        collider = house1.gameObject.AddComponent<BoxCollider>();
         collider.center = new Vector3(1, 6, 2);
         collider.size = new Vector3(20, 10, 10);
-        house.transform.localPosition = new Vector3(-7.5f, 0, 0.2f);
-        house.transform.localRotation = Quaternion.Euler(0, 96, 0);
-        house.tag = GameConfig.Tags.Player;
+        house1.transform.localPosition = new Vector3(-7.5f, 0, 0.2f);
+        house1.transform.localRotation = Quaternion.Euler(0, 96, 0);
+        house1.tag = GameConfig.Tags.Player;
+
+        houses[1] = house1;
+
 
         ///////////////
-        info = HouseInfo.GetRandomHouseInfo();
-        house = BuildHouse(info);
-        house.transform.SetParent(parent);
-        collider = house.gameObject.AddComponent<BoxCollider>();
+        House house2 = BuildHouse(HouseInfo.GetRandomHouseInfo());
+        house2.transform.SetParent(parent);
+        collider = house2.gameObject.AddComponent<BoxCollider>();
         collider.center = new Vector3(1, 6, 2);
         collider.size = new Vector3(20, 10, 10);
-        house.transform.localPosition = new Vector3(5, 0, 4.7f);
-        house.transform.localRotation = Quaternion.Euler(0, -135, 0);
-        house.tag = GameConfig.Tags.Player;
+        house2.transform.localPosition = new Vector3(5, 0, 4.7f);
+        house2.transform.localRotation = Quaternion.Euler(0, -135, 0);
+        house2.tag = GameConfig.Tags.Player;
+
+        houses[2] = house2;
 
         ///////////////
-        info = HouseInfo.GetRandomHouseInfo();
-        house = BuildHouse(info);
-        house.transform.SetParent(parent);
-        collider = house.gameObject.AddComponent<BoxCollider>();
+        House house3 = BuildHouse(HouseInfo.GetRandomHouseInfo());
+        house3.transform.SetParent(parent);
+        collider = house3.gameObject.AddComponent<BoxCollider>();
         collider.center = new Vector3(1, 6, 2);
         collider.size = new Vector3(20, 10, 10);
-        house.transform.localPosition = new Vector3(-5, 0, 4.7f);
-        house.transform.localRotation = Quaternion.Euler(0, 135, 0);
-        house.tag = GameConfig.Tags.Player;
+        house3.transform.localPosition = new Vector3(-5, 0, 4.7f);
+        house3.transform.localRotation = Quaternion.Euler(0, 135, 0);
+        house3.tag = GameConfig.Tags.Player;
+
+        houses[3] = house3;
 
         ///////////////
-        info = HouseInfo.GetRandomHouseInfo();
-        house = BuildHouse(info);
-        house.transform.SetParent(parent);
-        collider = house.gameObject.AddComponent<BoxCollider>();
+         House house4 = BuildHouse(HouseInfo.GetRandomHouseInfo());
+        house4.transform.SetParent(parent);
+        collider = house4.gameObject.AddComponent<BoxCollider>();
         collider.center = new Vector3(1, 6, 2);
         collider.size = new Vector3(20, 10, 10);
-        house.transform.localPosition = new Vector3(0, 0, 7);
-        house.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        house4.transform.localPosition = new Vector3(0, 0, 7);
+        house4.transform.localRotation = Quaternion.Euler(0, 180, 0);
+
+        houses[4] = house4;
+
+        return houses;
     }
 
     private void Start()
     {
-        HouseInfo info = HouseInfo.GetRandomHouseInfo();
-        print("color "+info.RoofColor + " : window " + info.WindowExists + " : chimney " + info.ChimneyExists);
-        Build5Houses();
     }
 }
