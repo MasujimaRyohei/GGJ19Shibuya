@@ -9,9 +9,12 @@ public class PlayerMover : BasePlayer
     [SerializeField]
     private Rigidbody _rigidbody;
 
+    private GameManager gameManager;
+
     protected override void Initialize()
-    {
+    {  
         InputProvider.MoveDirection
+            .Where(_=>enabled)
             .Subscribe(x =>
             {
                 var value = x.normalized * CurrentPlayerInfo.MoveSpeed;
@@ -20,6 +23,7 @@ public class PlayerMover : BasePlayer
             });
 
         InputProvider.AttackButton
+            .Where(_ => enabled)
             .Where(x => x && !PlayerCore.IsAttacking.Value)
             .Subscribe(x =>
             {

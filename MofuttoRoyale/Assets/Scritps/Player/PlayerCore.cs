@@ -31,6 +31,11 @@ public class PlayerCore : MonoBehaviour
     public ReactiveProperty<bool> IsAttacking = new BoolReactiveProperty(false);
 
     private PlayerMover _playerMover;
+public bool IsMovable
+    {
+        get { return _playerMover.enabled; }
+        set { _playerMover.enabled = value; }
+    }
     
     public void InitializePlayer(int id, PlayerType type, Vector3 point)
     {
