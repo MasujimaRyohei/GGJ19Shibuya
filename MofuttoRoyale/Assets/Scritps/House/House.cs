@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,11 +8,21 @@ using UniRx.Triggers;
 public class House : MonoBehaviour
 {
     [SerializeField] private HouseInfo info;
+    public HouseInfo Info { get { return info; } }
+    private Subject<int> onTouchPlayer = new Subject<int>();
+    public IObservable<int> OnTouchPlayer { get { return onTouchPlayer; } }
     // Start is called before the first frame update
     private void Start()
     {
-        info = new HouseInfo();
-        this.OnCollisionEnterAsObservable().Where(obj => obj.transform.tag == GameConfig.Tags.Player).Subscribe(_ => SceneManager.LoadScene(GameConfig.SceneName.Title));
+        
+    }
+
+    public void Initialize()
+    {
+        info = HouseInfo.GetRandomHouseInfo();
+        this.OnCollisionEnterAsObservable()
+            .Where(obj => obj.transform.tag == GameConfig.Tags.Player)
+            .Subscribe(obj =>  onTouchPlayer.OnNext(obj.transform.GetComponent<PlayerCore>().PlayerID));
     }
 
     // Update is called once per frame
