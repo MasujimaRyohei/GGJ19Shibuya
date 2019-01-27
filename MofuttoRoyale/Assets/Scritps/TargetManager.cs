@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class TargetManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class TargetManager : MonoBehaviour
         set { target = value; }
     }
 
+    [SerializeField] private Image hint1PopupImage;
+    [SerializeField] private Image hint2PopupImage;
     [SerializeField] private Image hint1Popup;
     [SerializeField] private Image hint2Popup;
 
@@ -22,41 +25,64 @@ public class TargetManager : MonoBehaviour
     [SerializeField] private Sprite window;
     [SerializeField] private Sprite chimney;
 
+    [SerializeField] private GameObject hintObjects;
+
+
     // Start is called before the first frame update
     private void Start()
     {
-     
+
     }
 
-public void ShowHint()
+    public IEnumerator ShowHint()
     {
         hint1Popup.gameObject.SetActive(true);
+        hint2Popup.gameObject.SetActive(true);
+
+        hint1Popup.transform.localScale = Vector3.zero;
+        hint2Popup.transform.localScale = Vector3.zero;
+
+        hint1Popup.transform.DOScale(1, 3.0f);
+        hint2Popup.transform.DOScale(1, 3.0f);
+        yield return new WaitForSeconds(3.0f);
+
+        hint1PopupImage.gameObject.SetActive(true);
 
         switch (target.RoofColor)
         {
             case ERoofColor.Red:
-                hint1Popup.sprite = roofRed;
+                hint1PopupImage.sprite = roofRed;
                 break;
             case ERoofColor.Yellow:
-                hint1Popup.sprite = roofYellow;
+                hint1PopupImage.sprite = roofYellow;
                 break;
             case ERoofColor.Green:
-                hint1Popup.sprite = roofGreen;
+                hint1PopupImage.sprite = roofGreen;
                 break;
             case ERoofColor.Blue:
-                hint1Popup.sprite = roofBlue;
+                hint1PopupImage.sprite = roofBlue;
                 break;
         }
 
-        hint2Popup.gameObject.SetActive(true);
+        hint2PopupImage.gameObject.SetActive(true);
 
-        if(target.ChimneyExists)
+        if (target.ChimneyExists)
         {
-            hint2Popup.sprite = chimney;
+            hint2PopupImage.sprite = chimney;
         }
-        else if(target.WindowExists)
+        else if (target.WindowExists)
         {
-            hint2Popup.sprite = window;
+            hint2PopupImage.sprite = window;
         }
+        else
+        {
+            hint2Popup.gameObject.SetActive(false);
+        }
+
+        yield return new WaitForSeconds(3.0f);
+        hint1Popup.gameObject.SetActive(false);
+        hint2Popup.gameObject.SetActive(false);
+
+        hintObjects.transform.DOLocalMoveY(-200, 5.0f);
     }
 }

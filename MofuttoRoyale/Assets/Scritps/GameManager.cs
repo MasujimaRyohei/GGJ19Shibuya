@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
         waveCutIn.transform.DOLocalMove(new Vector3(700, 0, 0), cutInTime);
 
         Controllable.Value = true;
-        targetManager.ShowHint();
+        yield return targetManager.ShowHint();
 
     }
 }
