@@ -11,7 +11,6 @@ public class PowerUpItem : ItemBase
 
     public override PlayerInfo UseItem(PlayerInfo currentInfo)
     {
-        Debug.Log("PowerUpだお〜〜");
         currentInfo.Power = currentInfo.Power * 1.5f;
         return currentInfo;
     }

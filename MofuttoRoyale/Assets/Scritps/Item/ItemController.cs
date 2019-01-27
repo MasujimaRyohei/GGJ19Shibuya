@@ -14,7 +14,6 @@ public class ItemController : MonoBehaviour
     {
         stageX = Stage.GetComponent<Renderer>().bounds.size.x;
         stageZ = Stage.GetComponent<Renderer>().bounds.size.z;
-        Debug.Log("X:" + stageX + "Z:" + stageZ);
 
         StartCoroutine(CreateItems(10, 2f));
     }

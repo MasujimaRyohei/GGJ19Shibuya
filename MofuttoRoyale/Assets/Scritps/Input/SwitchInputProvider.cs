@@ -18,9 +18,10 @@ public class SwitchInputProvider : BasePlayer, IInputProvider
 
     protected override void Initialize()
     {
-        Horizontal = "Horizontal" + PlayerID;
-        Vertical = "Vertical" + PlayerID;
-        Attack = "joystick " + PlayerID + " button 1";
+        int id = PlayerID + 1;
+        Horizontal = "Horizontal" + id;
+        Vertical = "Vertical" + id;
+        Attack = "joystick " + id + " button 1";
 
         this.UpdateAsObservable()
             .Select(x => Input.GetKeyDown(Attack))
