@@ -21,7 +21,7 @@ public class House : MonoBehaviour
             .Subscribe(obj =>
             {
                 onTouchPlayer.OnNext(obj.transform.GetComponent<PlayerCore>().PlayerID);
-                Destroy(obj.gameObject);
+                //Destroy(obj.gameObject);
             });
     }
 

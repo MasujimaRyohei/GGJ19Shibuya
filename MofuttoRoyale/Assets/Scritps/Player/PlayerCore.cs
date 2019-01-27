@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
+using UniRx.Triggers;
+using UnityEngine.SceneManagement;
 
 public class PlayerCore : MonoBehaviour
 {
@@ -51,6 +53,16 @@ public bool IsMovable
 
         SetPlayerInfomation();
         _isInitializedPlayer.Value = true;
+
+        int remainPlayer = GameConfig.PlayerMax;
+        this.OnDestroyAsObservable().Subscribe(_ =>
+        {
+            --remainPlayer;
+            if (remainPlayer <= 0)
+            {
+                SceneManager.LoadScene(GameConfig.SceneName.Main);
+            }
+        });
     }
 
     private void SetPlayerInfomation()

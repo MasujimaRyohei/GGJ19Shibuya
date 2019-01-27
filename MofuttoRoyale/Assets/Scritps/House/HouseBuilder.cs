@@ -38,7 +38,6 @@ public class HouseBuilder : MonoBehaviour
         if (info.WindowExists)
         {
             houseBaseObject = Instantiate(houseBaseWithWindow, houseObject.transform);
-            
         }
         else
         {
@@ -88,7 +87,7 @@ public class HouseBuilder : MonoBehaviour
         House house0 = BuildHouse(HouseInfo.GetRandomHouseInfo());
         house0.transform.SetParent(parent);
         BoxCollider collider = house0.gameObject.AddComponent<BoxCollider>();
-        collider.center = new Vector3(1, 6, 2);
+        collider.center = new Vector3(1, 6, 3);
         collider.size = new Vector3(20, 10, 10);
         house0.transform.localPosition = new Vector3(7.5f, 0, 0.2f);
         house0.transform.localRotation =  Quaternion.Euler(0, -96, 0);
@@ -100,7 +99,7 @@ public class HouseBuilder : MonoBehaviour
         House house1 = BuildHouse(HouseInfo.GetRandomHouseInfo());
         house1.transform.SetParent(parent);
         collider = house1.gameObject.AddComponent<BoxCollider>();
-        collider.center = new Vector3(1, 6, 2);
+        collider.center = new Vector3(1, 6, 3);
         collider.size = new Vector3(20, 10, 10);
         house1.transform.localPosition = new Vector3(-7.5f, 0, 0.2f);
         house1.transform.localRotation = Quaternion.Euler(0, 96, 0);
@@ -113,7 +112,7 @@ public class HouseBuilder : MonoBehaviour
         House house2 = BuildHouse(HouseInfo.GetRandomHouseInfo());
         house2.transform.SetParent(parent);
         collider = house2.gameObject.AddComponent<BoxCollider>();
-        collider.center = new Vector3(1, 6, 2);
+        collider.center = new Vector3(1, 6, 3);
         collider.size = new Vector3(20, 10, 10);
         house2.transform.localPosition = new Vector3(5, 0, 4.7f);
         house2.transform.localRotation = Quaternion.Euler(0, -135, 0);
@@ -125,7 +124,7 @@ public class HouseBuilder : MonoBehaviour
         House house3 = BuildHouse(HouseInfo.GetRandomHouseInfo());
         house3.transform.SetParent(parent);
         collider = house3.gameObject.AddComponent<BoxCollider>();
-        collider.center = new Vector3(1, 6, 2);
+        collider.center = new Vector3(1, 6, 3);
         collider.size = new Vector3(20, 10, 10);
         house3.transform.localPosition = new Vector3(-5, 0, 4.7f);
         house3.transform.localRotation = Quaternion.Euler(0, 135, 0);
@@ -137,7 +136,7 @@ public class HouseBuilder : MonoBehaviour
          House house4 = BuildHouse(HouseInfo.GetRandomHouseInfo());
         house4.transform.SetParent(parent);
         collider = house4.gameObject.AddComponent<BoxCollider>();
-        collider.center = new Vector3(1, 6, 2);
+        collider.center = new Vector3(1, 6, 3);
         collider.size = new Vector3(20, 10, 10);
         house4.transform.localPosition = new Vector3(0, 0, 7);
         house4.transform.localRotation = Quaternion.Euler(0, 180, 0);

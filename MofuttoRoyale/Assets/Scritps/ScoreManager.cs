@@ -19,8 +19,7 @@ public class ScoreManager : MonoBehaviour
 
     public void AddScore(int id, int score)
     {
-        playerScore[id-1].Value += score;
-        print(playerScore[id - 1].Value);
+        playerScore[id].Value += score;
         string key = GameConfig.Tags.Player + id.ToString();
         PlayerPrefs.SetInt(key, PlayerPrefs.GetInt(key, 0) + score);
     }
