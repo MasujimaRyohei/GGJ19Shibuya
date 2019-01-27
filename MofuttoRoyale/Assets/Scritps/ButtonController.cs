@@ -11,8 +11,6 @@ public class ButtonController : MonoBehaviour {
 	public bool useFlag = true;
 	[SerializeField] private GameObject RightButton;
 	[SerializeField] private GameObject LeftButton;
-	[SerializeField] private GameObject BtnController;
-    [SerializeField] private GameObject SceneObj;
 	//right get
 	//右→flag=true,左→false
 	//Enter -> bool ->
@@ -40,7 +38,7 @@ public class ButtonController : MonoBehaviour {
                 AudioManager.Instance.PlaySE("kettei001");
                flag = false;
 			}
-			if (Input.GetKey (KeyCode.Return) || Input.GetButtonDown("joystick 1 button 1")) {
+			if (Input.GetKey (KeyCode.Return) || Input.GetButtonDown("Attack1")) {
 				AudioManager.Instance.PlaySE("kettei001");
 				onClickButton ();
 
@@ -50,7 +48,7 @@ public class ButtonController : MonoBehaviour {
 	
 	public void onClickButton(){
 		if(flag == true){
-			BtnController.GetComponent<RuleMove>().rFlag = true;
+			GetComponent<RuleMove>().rFlag = true;
 		}else if(flag == false){
 			useFlag = false;
 			SceneManager.LoadScene(GameConfig.SceneName.Main);

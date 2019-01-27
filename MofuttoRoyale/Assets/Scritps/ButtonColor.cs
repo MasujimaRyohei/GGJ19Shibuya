@@ -40,13 +40,13 @@ public class ButtonColor : MonoBehaviour {
 			}
 
 			if (flag == true) {
-				if (Input.GetKey (KeyCode.Return) || Input.GetButtonDown("joystick 1 button 1")) {
+				if (Input.GetKey (KeyCode.Return) || Input.GetButtonDown("Attack1")) {
 					startCbBtn.normalColor = pressedColor;
 					startBtn.colors = startCbBtn;
 
 				}
 			} else if(flag ==false) {
-				if (Input.GetKey (KeyCode.Return) || Input.GetButtonDown("joystick 1 button 1")) {
+				if (Input.GetKey (KeyCode.Return) || Input.GetButtonDown("Attack1")) {
 					exitCbBtn.normalColor = pressedColor;
 					exitBtn.colors = exitCbBtn;
 				}

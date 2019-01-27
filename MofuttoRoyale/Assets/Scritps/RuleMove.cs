@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class RuleMove : MonoBehaviour {
 	
 	[SerializeField] private GameObject RuleImage;
-	[SerializeField] private GameObject ButtonImage;
+	//[SerializeField] private GameObject ButtonImage;
 	[SerializeField] private GameObject btnController;
 
 
@@ -25,10 +25,10 @@ public class RuleMove : MonoBehaviour {
 		print("RuleMove読み込み");
 		dxR = RuleImage.GetComponent<RectTransform> ().localPosition.x;
 		zR = RuleImage.GetComponent<RectTransform> ().position.z;
-		rB = ButtonImage.GetComponent<Image> ().color.r;
-		gB = ButtonImage.GetComponent<Image> ().color.g;
-		bB = ButtonImage.GetComponent<Image> ().color.b;
-		aB = ButtonImage.GetComponent<Image> ().color.a;
+		// rB = ButtonImage.GetComponent<Image> ().color.r;
+		// gB = ButtonImage.GetComponent<Image> ().color.g;
+		// bB = ButtonImage.GetComponent<Image> ().color.b;
+		// aB = ButtonImage.GetComponent<Image> ().color.a;
 	}
 
 	// Update is called once per frame
@@ -48,7 +48,7 @@ public class RuleMove : MonoBehaviour {
 			} else if (flag == false) {
 				print ("戻るボタン現れるよ！");
 				aB += da;
-				ButtonImage.GetComponent<Image> ().color = new Vector4 (rB, gB, bB, aB);
+				//ButtonImage.GetComponent<Image> ().color = new Vector4 (rB, gB, bB, aB);
 				if (aB > 1) {
 					da = 0f;
 					removeFlag = true;
@@ -62,7 +62,7 @@ public class RuleMove : MonoBehaviour {
 			}
 			if(rmFlag == true){
 				aB -= dda;
-				ButtonImage.GetComponent<Image> ().color = new Vector4 (rB, gB, bB, aB);
+				//ButtonImage.GetComponent<Image> ().color = new Vector4 (rB, gB, bB, aB);
 				if (aB < 0) {
 					dda = 0f;
 
